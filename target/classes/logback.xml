@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%F line:%L] - %msg%n%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="CraftsmanStash" class="com.gc.craftsman.logstash.logback.appender.CraftsmanLoggerAppender">
+        <destination>10.2.75.36:4560</destination>
+        <!-- encoder is required -->
+        <encoder class="com.gc.craftsman.logstash.logback.encoder.CraftsmanLoggerEncoder"/>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+        <!--<appender-ref ref="CraftsmanStash"/>-->
+    </root>
+</configuration>
