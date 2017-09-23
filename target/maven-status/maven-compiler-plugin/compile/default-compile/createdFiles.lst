@@ -1,1 +1,4 @@
+com/gc/craftsman/logstash/logback/encoder/CraftsmanLoggerEncoder.class
+com/gc/craftsman/logstash/logback/appender/CraftsmanLoggerAppender.class
+com/gc/craftsman/logstash/logback/thread/RequestScopeContext.class
 com/gc/craftsman/logstash/logback/trace/LogTraceContext.class

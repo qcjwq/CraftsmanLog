@@ -1,5 +1,4 @@
 .idea/
-
-target/generated-sources/
+target/
 
 *.iml

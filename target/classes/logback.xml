@@ -14,6 +14,6 @@
 
     <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
-        <!--<appender-ref ref="CraftsmanStash"/>-->
+        <appender-ref ref="CraftsmanStash"/>
     </root>
 </configuration>
