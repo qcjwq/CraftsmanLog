@@ -1,7 +1,7 @@
 package com.gc.craftsman.logstash.logback.trace;
 
 import com.gc.craftsman.logstash.logback.thread.RequestScopeContext;
-import org.apache.commons.lang3.StringUtils;
+import net.logstash.logback.encoder.org.apache.commons.lang.StringUtils;
 
 import java.util.Map;
 

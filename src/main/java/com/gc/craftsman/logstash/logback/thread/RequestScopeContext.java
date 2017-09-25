@@ -1,12 +1,12 @@
 package com.gc.craftsman.logstash.logback.thread;
 
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * Created by cjw on 23/09/2017.
@@ -27,8 +27,8 @@ public class RequestScopeContext<K, V> {
     }
 
     public void init() {
-        localMap.set(Maps.newConcurrentMap());
-        localSet.set(Sets.newConcurrentHashSet());
+        localMap.set(new ConcurrentHashMap<>());
+        localSet.set(new ConcurrentSkipListSet<>());
         logger.debug("request scope context init");
     }
 
@@ -51,13 +51,13 @@ public class RequestScopeContext<K, V> {
 
     public void put(K key, V value) {
         if (localSet.get() == null) {
-            localSet.set(Sets.newConcurrentHashSet());
+            localSet.set(new ConcurrentSkipListSet<>());
         }
 
         localSet.get().add(key);
 
         if (localMap.get() == null) {
-            localMap.set(Maps.newConcurrentMap());
+            localMap.set(new ConcurrentHashMap<>());
         }
 
         if (value != null) {
