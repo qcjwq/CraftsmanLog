@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.qcjwq.craftsman.logstash.logback</groupId>
-    <artifactId>logstash-logback-encoder</artifactId>
-    <version>0.0.5</version>
+    <artifactId>craftsman-log</artifactId>
+    <version>0.0.6</version>
     <packaging>jar</packaging>
 
     <name>craftsman-log</name>
