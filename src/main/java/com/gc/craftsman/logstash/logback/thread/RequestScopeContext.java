@@ -15,14 +15,14 @@ public class RequestScopeContext<K, V> {
 
     private static final Logger logger = LoggerFactory.getLogger(RequestScopeContext.class);
 
-    private static RequestScopeContext instance = new RequestScopeContext();
+    private static RequestScopeContext<String, String> instance = new RequestScopeContext<String, String>();
     private ThreadLocal<Map<K, V>> localMap = new ThreadLocal<>();
     private ThreadLocal<Set<K>> localSet = new ThreadLocal<>();
 
     private RequestScopeContext() {
     }
 
-    public static RequestScopeContext getInstance() {
+    public static RequestScopeContext<String, String> getInstance() {
         return instance;
     }
 
@@ -63,6 +63,23 @@ public class RequestScopeContext<K, V> {
         if (value != null) {
             localMap.get().put(key, value);
         }
+    }
+
+    public void putAll(Map<K, V> map) {
+        if (map.isEmpty()) {
+            return;
+        }
+
+        if (localSet.get() == null) {
+            localSet.set(new ConcurrentSkipListSet<>());
+        }
+
+        if (localMap.get() == null) {
+            localMap.set(new ConcurrentHashMap<>());
+        }
+
+        map.keySet().forEach(a -> localSet.get().add(a));
+        map.forEach(localMap.get()::put);
     }
 
     public V get(K key) {
